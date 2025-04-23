@@ -1,0 +1,131 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.feature-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.action-button {
+    padding: 20px 40px;
+    font-size: 22px;
+    border: none;
+    background-color: #ffcc00;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.action-button:hover {
+    background-color: #ffaa00;
+}
+
+.action-button:focus {
+    outline: none;
+}
+
+.action-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Big Hand */
+#highFiveHand {
+    font-size: 500px;
+    position: absolute;
+    bottom: -500px;
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1s;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0));
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+}
+
+.high-five {
+    opacity: 1;
+    transform: translateY(-95vh) rotate(-10deg) !important;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)) !important;
+}
+
+.fade-out {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1s !important;
+    transform: translateY(-105vh) rotate(-5deg) scale(0.9) !important;
+    opacity: 0;
+}
+
+/* Impact effect */
+.impact {
+    animation: impact 0.2s ease-out;
+}
+
+@keyframes impact {
+    0% { transform: translateY(-95vh) rotate(-10deg) scale(1); }
+    50% { transform: translateY(-95vh) rotate(-10deg) scale(0.95); }
+    75% { transform: translateY(-93vh) rotate(-12deg) scale(0.97); }
+    100% { transform: translateY(-95vh) rotate(-10deg) scale(1); }
+}
+
+/* Small Hands optimization */
+.small-hand {
+    position: absolute;
+    font-size: 50px;
+    animation: explode 3s forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+        transform: translate(calc(var(--x) * 0.2), calc(var(--y) * 0.2)) scale(0.9) rotate(calc(var(--rotation) * 0.3));
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.5) rotate(var(--rotation));
+    }
+}
+
+/* Screen shake effect */
+.screen-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate3d(-2px, -2px, 0); }
+    20%, 40%, 60%, 80% { transform: translate3d(2px, 2px, 0); }
+} 

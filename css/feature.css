@@ -1,0 +1,320 @@
+/* Feature Page Styles */
+body.feature-page {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.main-header .logo {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.main-header .logo:hover {
+    transform: translateY(-2px);
+}
+
+/* Remove conflicting gradient styles */
+.main-header .logo .mood,
+.main-header .logo .wise {
+    display: inline-block;
+}
+
+.feature-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 80px;
+}
+
+.feature-content h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.action-button {
+    font-size: 1.2rem;
+    padding: 1.2rem 2.4rem;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px -10px rgba(255, 107, 107, 0.5),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Enhanced hover effect with floating particles */
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Sparkle effect on hover */
+.action-button::after {
+    content: '✨';
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.action-button:hover::after {
+    animation: sparkle 1.5s infinite linear;
+    opacity: 1;
+}
+
+/* Multiple sparkles */
+.action-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.action-button:hover .particle {
+    animation: float-particle 1s ease-out forwards;
+}
+
+/* Button press effect */
+.action-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 5px 15px -5px rgba(255, 107, 107, 0.4),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Pulsing glow effect */
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: inherit;
+    border-radius: 18px;
+    z-index: -1;
+    animation: pulse-glow 2s ease-out infinite;
+    opacity: 0;
+}
+
+/* Success state */
+.action-button.success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    transform: scale(1.05);
+}
+
+.action-button.success::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    opacity: 0;
+    animation: success-mark 0.5s forwards;
+}
+
+/* Loading state enhancement */
+.action-button.loading {
+    background: linear-gradient(135deg, #6366F1, #3B82F6);
+    pointer-events: none;
+}
+
+.action-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: button-loading-spinner 0.8s linear infinite;
+}
+
+/* New Animations */
+@keyframes sparkle {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(0); opacity: 0; }
+    25% { transform: translate(100%, -100%) rotate(90deg) scale(1); opacity: 1; }
+    50% { transform: translate(200%, -50%) rotate(180deg) scale(0); opacity: 0; }
+    75% { transform: translate(100%, 0%) rotate(270deg) scale(1); opacity: 1; }
+}
+
+@keyframes float-particle {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--x, 100px), var(--y, -100px)) rotate(720deg); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.2; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes success-mark {
+    from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Button variants with unique effects */
+
+/* Wisdom button with mystical effect */
+.wisdom-btn {
+    background: linear-gradient(135deg, #4158D0 0%, #C850C0 50%, #FFCC70 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+.wisdom-btn::before {
+    content: '🔮';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.wisdom-btn:hover::before {
+    left: 10px;
+    opacity: 1;
+}
+
+/* Celebration button with confetti effect */
+.celebration-btn {
+    background: linear-gradient(135deg, #00F5A0 0%, #00D9F5 100%);
+}
+
+.celebration-btn::after {
+    content: '🎉';
+    font-size: 1.2em;
+}
+
+/* Joke button with laughing effect */
+.joke-btn {
+    background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+}
+
+.joke-btn:hover {
+    animation: laugh 0.5s ease infinite;
+}
+
+/* Chat button with typing indicator */
+.chat-btn {
+    background: linear-gradient(135deg, #43E97B 0%, #38F9D7 100%);
+}
+
+.chat-btn::after {
+    content: '...';
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.chat-btn:hover::after {
+    opacity: 1;
+    animation: typing 1s infinite;
+}
+
+/* Additional Animations */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes laugh {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-3px) rotate(-1deg); }
+    75% { transform: translateY(-3px) rotate(1deg); }
+}
+
+@keyframes typing {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+    100% { content: '.'; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 1.5rem;
+    }
+
+    .main-header .logo {
+        font-size: 20px;
+    }
+
+    .feature-content h1 {
+        font-size: 2rem;
+    }
+    
+    .action-button {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+    }
+    
+    .action-button::before,
+    .action-button::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 1rem;
+    }
+
+    .feature-content {
+        padding: 1rem;
+    }
+    
+    .feature-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+.hidden {
+    display: none !important;
+} 

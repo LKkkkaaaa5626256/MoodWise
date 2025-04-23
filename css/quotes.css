@@ -1,0 +1,178 @@
+/* Quotes Styles */
+.feature-content {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 80px;
+    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+}
+
+.quote-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.quote-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.quote-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.quote-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.2s;
+}
+
+.quote-box.visible .quote-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    font-size: 4rem;
+    color: #FF6B6B;
+    opacity: 0.2;
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
+.quote-text::before {
+    left: -1rem;
+    top: -0.5rem;
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+.quote-text::after {
+    right: -1rem;
+    bottom: -1rem;
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+.quote-box.visible .quote-text::before,
+.quote-box.visible .quote-text::after {
+    transform: translateX(0);
+    opacity: 0.2;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.4s;
+}
+
+.quote-box.visible .quote-author {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Button Styles */
+.action-button {
+    font-size: 1.2rem;
+    padding: 1.2rem 2.4rem;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px -10px rgba(255, 107, 107, 0.5);
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.action-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease 0.6s;
+}
+
+.action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -10px rgba(255, 107, 107, 0.6);
+}
+
+.action-button:active {
+    transform: translateY(1px);
+}
+
+/* Back Link */
+.back-link {
+    margin-top: 2rem;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.back-link.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease 0.8s;
+}
+
+.back-link:hover {
+    color: #FF6B6B;
+    transform: translateX(-5px);
+}
+
+/* Animation for quote changes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-box {
+    animation: fadeIn 0.5s ease-out;
+} 
