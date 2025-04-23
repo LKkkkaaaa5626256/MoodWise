@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration - MoodWise</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/feature.css">
+    <link rel="stylesheet" href="css/celebration.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+</head>
+<body class="feature-page">
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <span class="mood">Mood</span><span class="wise">Wise</span>
+        </a>
+    </header>
+
+    <div class="feature-content">
+        <div class="celebration-container">
+            <h1 id="celebrationTitle">Time to Celebrate! 🎉</h1>
+            
+            <div class="celebration-form">
+                <div class="input-group">
+                    <label for="nameInput">Your Name</label>
+                    <input type="text" id="nameInput" class="celebration-input" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="durationInput">Celebration Duration</label>
+                    <div class="duration-controls">
+                        <input type="number" id="durationInput" class="celebration-input" placeholder="15" min="1">
+                        <span class="duration-label">seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="startButton" class="action-button celebration-btn" onclick="fireEffects()">
+                <span class="button-content">
+                    <span class="button-icon">🎉</span>
+                    <span class="button-text">Start Celebration!</span>
+                </span>
+            </button>
+        </div>
+
+        <a href="index.html#features" class="back-link">← Back to Activities</a>
+    </div>
+
+    <script src="js/celebration.js"></script>
+</body>
+</html> 

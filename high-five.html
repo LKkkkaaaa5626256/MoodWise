@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Five with Exploding Hands!</title>
+    <link rel="stylesheet" href="css/high-five.css">
+</head>
+<body>
+    <div class="feature-content">
+        <div class="content-wrapper">
+            <h1 class="gradient-text">High Five!</h1>
+            <p class="feature-description">Give yourself a high five and celebrate your amazing self! 🎉</p>
+            
+            <div class="high-five-counter">Celebrations Given: <span id="counter">0</span></div>
+            
+            <div class="button-container">
+                <button class="action-button" onclick="giveHighFive()">
+                    <span class="button-icon">✋</span>
+                    <span class="button-text">High Five!</span>
+                </button>
+                <button class="action-button fist-bump" onclick="giveFistBump()">
+                    <span class="button-icon">👊</span>
+                    <span class="button-text">Fist Bump!</span>
+                </button>
+            </div>
+            
+            <a href="index.html#features" class="back-link">← Back to Activities</a>
+        </div>
+    </div>
+
+    <div class="celebration-effects">
+        <div class="confetti-container"></div>
+        <div class="sparkles-container"></div>
+    </div>
+
+    <div id="highFiveHand" class="hand">✋</div>
+    <div id="fistBumpHand" class="hand fist">👊</div>
+
+    <script src="js/high-five.js"></script>
+</body>
+</html>
+</html>
