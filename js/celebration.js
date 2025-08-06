@@ -170,3 +170,9 @@ function fireEffects() {
         document.querySelector(".back-link").classList.remove("hidden");
     }, duration);
 } 
+document.addEventListener("DOMContentLoaded", function() {
+    const startButton = document.getElementById("startButton");
+    if (startButton) {
+        startButton.addEventListener("click", fireEffects);
+    }
+});
